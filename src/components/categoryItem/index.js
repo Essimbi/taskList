@@ -1,12 +1,20 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from "react-native";
+import React from "react";
+import { MaterialIcons } from "@expo/vector-icons";
+import style from "./style";
 
-const CategoryItem = () => {
+const CategoryItem = ({ item }) => {
   return (
-    <View>
-      <Text>CategoryItem</Text>
+    <View style={style.scrollableItem}>
+      <View style={style.iconStyle}>
+        <MaterialIcons name={item.icon} size={50} color="black" />
+      </View>
+      <View>
+        <Text style={style.mainText}> {item.title} </Text>
+        <Text style={style.subText}> Total task: {item.totalTask} </Text>
+      </View>
     </View>
-  )
-}
+  );
+};
 
-export default CategoryItem
+export default CategoryItem;

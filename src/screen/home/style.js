@@ -23,7 +23,12 @@ const style = StyleSheet.create({
     listCategoryDiv: {
         paddingHorizontal: 15,
         paddingVertical: 15
-    }
+    },
+
+    scrallableListe: {
+        // paddingHorizontal: 15,
+        paddingVertical: 15
+    },
 })
 
 export default style
