@@ -1,7 +1,7 @@
 import { View, Text, Pressable } from "react-native";
 import React from "react";
 import style from "./style";
-import { AddIcon, Box, HamburgerIcon, Input, Menu } from "native-base";
+import { AddIcon, Input, Menu } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
 const Home = () => {
@@ -31,6 +31,13 @@ const Home = () => {
         </Menu>
       </View>
       {/* Fin du Header */}
+
+      {/* Liste des catégories */}
+      <View style={style.listCategoryDiv}>
+        <Text style={style.listCategoryTitle}>Categories</Text>
+      </View>
+      {/* Fin de la liste des catégories */}
+
     </View>
   );
 };

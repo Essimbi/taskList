@@ -13,6 +13,16 @@ const style = StyleSheet.create({
 
     searchInput: {
         width: 10
+    },
+
+    listCategoryTitle: {
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+
+    listCategoryDiv: {
+        paddingHorizontal: 15,
+        paddingVertical: 15
     }
 })
 
