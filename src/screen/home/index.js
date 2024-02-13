@@ -1,7 +1,7 @@
 import { View, Text, Pressable, FlatList, Modal } from "react-native";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import style from "./style";
-import { AddIcon, Input, Menu } from "native-base";
+import { AddIcon, Input, Fab } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import CategoryItem from "../../components/categoryItem";
 
@@ -13,7 +13,6 @@ const Home = () => {
   ];
 
   const [modalVisible, setModalVisible] = useState(false);
-  const snapPoints = useMemo(() => ['25%', '50%', '70%', 9])
 
   return (
     <View>
@@ -22,8 +21,8 @@ const Home = () => {
         {/* <Icon name="menu" size="30" color="white" /> */}
         <MaterialIcons name="menu" size={30} color="black" />
         <Input mx="3" placeholder="Search task here..." w="80%" rounded={50} />
-
-        <Menu
+        <MaterialIcons name="person" size={30} color="black" />
+        {/* <Menu
           w="190"
           trigger={(triggerProps) => {
             return (
@@ -40,7 +39,7 @@ const Home = () => {
             New category
           </Menu.Item>
           <Menu.Item>New task</Menu.Item>
-        </Menu>
+        </Menu> */}
       </View>
       {/* Fin du Header */}
 
@@ -60,6 +59,13 @@ const Home = () => {
       </View>
       {/* Fin de la liste des catégories */}
 
+      {/* Bouton d'ajout des task */}
+      <Fab renderInPortal={true} shadow={2} size="sm" icon={<AddIcon color="white" size="sm" />} onPress={() => {
+        setModalVisible(!modalVisible)
+      }} />
+      {/* Fin bouton d'ajout des task */}
+      
+      {/* Modal pour ajouter une nouvelle catégorie */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -68,13 +74,29 @@ const Home = () => {
           setModalVisible(!modalVisible);
         }}
       >
-        <View style={{ flex: 1, backgroundColor: 'rgb(0,0,0,0.5)', alignItems: 'center', justifyContent: 'center'}}>
-          <View style={{height: 350, backgroundColor: 'white', padding: 15, width: '100%', borderRadius: 10, marginBottom: -410 }}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgb(0,0,0,0.5)",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <View
+            style={{
+              height: 350,
+              backgroundColor: "white",
+              padding: 15,
+              width: "100%",
+              borderRadius: 10,
+              marginBottom: -410,
+            }}
+          >
             <Text style={style.listCategoryTitle}>New task</Text>
           </View>
         </View>
       </Modal>
-
+      {/* Modal pour ajouter une nouvelle catégorie */}
     </View>
   );
 };
