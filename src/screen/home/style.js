@@ -71,6 +71,29 @@ const style = StyleSheet.create({
         marginBottom: 15,
         textAlign: 'center',
       },
+
+      formDiv: {
+        paddingVertical: 15,
+        marginLeft: -15
+      },
+
+      formControl: {
+        marginBottom: 20
+      },
+
+      containBtn: {
+        display: 'flex',
+        flexDirection: 'row',
+      },
+
+      btnCancel: {
+        marginLeft: 200
+      },
+
+      btn: {
+        marginLeft: 15
+      },
+
 })
 
 export default style

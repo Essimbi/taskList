@@ -1,4 +1,4 @@
-import { View, Text, Pressable, FlatList, Modal } from "react-native";
+import { View, Text, FlatList, Modal, Button } from "react-native";
 import React, { useState } from "react";
 import style from "./style";
 import { AddIcon, Input, Fab } from "native-base";
@@ -89,10 +89,38 @@ const Home = () => {
               padding: 15,
               width: "100%",
               borderRadius: 10,
-              marginBottom: -410,
+              marginBottom: -425,
             }}
           >
             <Text style={style.listCategoryTitle}>New task</Text>
+            <View style={style.formDiv}>
+              <View style={style.formControl}>
+                <Input mx="3" placeholder="Search task here..." w="100%" rounded={20} />
+              </View>
+              <View style={style.formControl}>
+                <Input mx="3" placeholder="Search task here..." w="100%" rounded={20} />
+              </View>
+              <View style={style.formControl}>
+                <Input mx="3" placeholder="Search task here..." w="100%" rounded={20} />
+              </View>
+              <View style={style.containBtn}>
+                <View style={style.btnCancel}>
+                  <Button
+                    title="Press me"
+                    color={"red"}
+                    style={style.btn}
+                    onPress={() => setModalVisible(!modalVisible)}
+                  />
+                </View>
+                <View style={style.btn}>
+                  <Button
+                    title="Press me"
+                    color={"black"}
+                    onPress={() => setModalVisible(!modalVisible)}
+                  />
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </Modal>
