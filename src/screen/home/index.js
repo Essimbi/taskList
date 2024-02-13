@@ -1,13 +1,5 @@
-import {
-  View,
-  Text,
-  Pressable,
-  FlatList,
-  Alert,
-  Modal,
-  StyleSheet,
-} from "react-native";
-import React, { useState } from "react";
+import { View, Text, Pressable, FlatList, Modal } from "react-native";
+import React, { useMemo, useState } from "react";
 import style from "./style";
 import { AddIcon, Input, Menu } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -21,6 +13,7 @@ const Home = () => {
   ];
 
   const [modalVisible, setModalVisible] = useState(false);
+  const snapPoints = useMemo(() => ['25%', '50%', '70%', 9])
 
   return (
     <View>
@@ -43,7 +36,9 @@ const Home = () => {
             );
           }}
         >
-          <Menu.Item onPress={() => setModalVisible(true)}>New category</Menu.Item>
+          <Menu.Item onPress={() => setModalVisible(true)}>
+            New category
+          </Menu.Item>
           <Menu.Item>New task</Menu.Item>
         </Menu>
       </View>
@@ -70,22 +65,16 @@ const Home = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
         }}
       >
-        <View style={style.centeredView}>
-          <View style={style.modalView}>
-            <Text style={style.modalText}>Hello World!</Text>
-            <Pressable
-              style={[style.button, style.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={style.textStyle}>Hide Modal</Text>
-            </Pressable>
+        <View style={{ flex: 1, backgroundColor: 'rgb(0,0,0,0.5)', alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{height: 350, backgroundColor: 'white', padding: 15, width: '100%', borderRadius: 10, marginBottom: -410 }}>
+            <Text style={style.listCategoryTitle}>New task</Text>
           </View>
         </View>
       </Modal>
+
     </View>
   );
 };
