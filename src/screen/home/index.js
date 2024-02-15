@@ -78,7 +78,7 @@ const Home = () => {
           style={{
             flex: 1,
             backgroundColor: "rgb(0,0,0,0.5)",
-            // alignItems: "center",
+            alignItems: "center",
             justifyContent: "center",
           }}
         >
