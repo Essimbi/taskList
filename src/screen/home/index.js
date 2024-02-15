@@ -13,6 +13,7 @@ const Home = () => {
   ];
 
   const [modalVisible, setModalVisible] = useState(false);
+  // const toto = "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"
 
   return (
     <View>
