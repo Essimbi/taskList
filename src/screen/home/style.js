@@ -94,6 +94,17 @@ const style = StyleSheet.create({
         marginLeft: 15
       },
 
+      formControlDatePicker: {
+        paddingHorizontal: 15,
+        display: 'flex',
+        flexDirection: 'row'
+      },
+
+      datePicker: {
+        padding: 20,
+        margin: 40
+      },
+
 })
 
 export default style

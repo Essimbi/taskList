@@ -1,4 +1,5 @@
 import { View, Text, FlatList, Modal, Button } from "react-native";
+import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useState } from "react";
 import style from "./style";
 import { AddIcon, Input, Fab } from "native-base";
@@ -15,6 +16,30 @@ const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
   // const toto = "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"
 
+  const [date, setDate] = useState(new Date(1598051730000));
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    DateTimePickerAndroid.open({
+      value: date,
+      onChange,
+      mode: currentMode,
+      is24Hour: true,
+    });
+  };
+
+  const showDatepicker = () => {
+    showMode("date");
+  };
+
+  const showTimepicker = () => {
+    showMode("time");
+  };
+
   return (
     <View>
       {/* Debut du Header */}
@@ -23,24 +48,6 @@ const Home = () => {
         <MaterialIcons name="menu" size={30} color="black" />
         <Input mx="3" placeholder="Search task here..." w="80%" rounded={50} />
         <MaterialIcons name="person" size={30} color="black" />
-        {/* <Menu
-          w="190"
-          trigger={(triggerProps) => {
-            return (
-              <Pressable
-                accessibilityLabel="More options menu"
-                {...triggerProps}
-              >
-                <AddIcon name="menu" size="5" color="black" />
-              </Pressable>
-            );
-          }}
-        >
-          <Menu.Item onPress={() => setModalVisible(true)}>
-            New category
-          </Menu.Item>
-          <Menu.Item>New task</Menu.Item>
-        </Menu> */}
       </View>
       {/* Fin du Header */}
 
@@ -61,11 +68,17 @@ const Home = () => {
       {/* Fin de la liste des catégories */}
 
       {/* Bouton d'ajout des task */}
-      <Fab renderInPortal={true} shadow={2} size="sm" icon={<AddIcon color="white" size="sm" />} onPress={() => {
-        setModalVisible(!modalVisible)
-      }} />
+      <Fab
+        renderInPortal={true}
+        shadow={2}
+        size="sm"
+        icon={<AddIcon color="white" size="sm" />}
+        onPress={() => {
+          setModalVisible(!modalVisible);
+        }}
+      />
       {/* Fin bouton d'ajout des task */}
-      
+
       {/* Modal pour ajouter une nouvelle catégorie */}
       <Modal
         animationType="slide"
@@ -78,14 +91,14 @@ const Home = () => {
         <View
           style={{
             flex: 1,
-            backgroundColor: "rgb(0,0,0,0.5)",
+            backgroundColor: "rgb(0,0,0,0.1)",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
           <View
             style={{
-              height: 350,
+              height: 440,
               backgroundColor: "white",
               padding: 15,
               width: "100%",
@@ -96,13 +109,33 @@ const Home = () => {
             <Text style={style.listCategoryTitle}>New task</Text>
             <View style={style.formDiv}>
               <View style={style.formControl}>
-                <Input mx="3" placeholder="Search task here..." w="100%" rounded={20} />
+                <Input
+                  mx="3"
+                  placeholder="Search task here..."
+                  w="100%"
+                  rounded={20}
+                />
               </View>
               <View style={style.formControl}>
-                <Input mx="3" placeholder="Search task here..." w="100%" rounded={20} />
+                <Input
+                  mx="3"
+                  placeholder="Search task here..."
+                  w="100%"
+                  rounded={20}
+                />
               </View>
               <View style={style.formControl}>
-                <Input mx="3" placeholder="Search task here..." w="100%" rounded={20} />
+                <Input
+                  mx="3"
+                  placeholder="Search task here..."
+                  w="100%"
+                  rounded={20}
+                />
+              </View>
+              <View style={style.formControlDatePicker}>
+                <Button onPress={showDatepicker} title="Show date picker!" style={style.datePicker}/>
+                <Button onPress={showTimepicker} title="Show time picker!" />
+                {/* <Text>selected: {date.toLocaleString()}</Text> */}
               </View>
               <View style={style.containBtn}>
                 <View style={style.btnCancel}>
