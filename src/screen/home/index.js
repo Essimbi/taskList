@@ -5,6 +5,7 @@ import style from "./style";
 import { AddIcon, Input, Fab } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import CategoryItem from "../../components/categoryItem";
+import AddForm from "../../components/add-form";
 
 const Home = () => {
   const categoryData = [
@@ -15,30 +16,9 @@ const Home = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
   // const toto = "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"
-
-  const [date, setDate] = useState(new Date(1598051730000));
-
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setDate(currentDate);
-  };
-
-  const showMode = (currentMode) => {
-    DateTimePickerAndroid.open({
-      value: date,
-      onChange,
-      mode: currentMode,
-      is24Hour: true,
-    });
-  };
-
-  const showDatepicker = () => {
-    showMode("date");
-  };
-
-  const showTimepicker = () => {
-    showMode("time");
-  };
+  const closeModal = (value) => {
+    setModalVisible(value)
+  }
 
   return (
     <View>
@@ -88,75 +68,7 @@ const Home = () => {
           setModalVisible(!modalVisible);
         }}
       >
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "rgb(0,0,0,0.1)",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <View
-            style={{
-              height: 440,
-              backgroundColor: "white",
-              padding: 15,
-              width: "100%",
-              borderRadius: 10,
-              marginBottom: -425,
-            }}
-          >
-            <Text style={style.listCategoryTitle}>New task</Text>
-            <View style={style.formDiv}>
-              <View style={style.formControl}>
-                <Input
-                  mx="3"
-                  placeholder="Search task here..."
-                  w="100%"
-                  rounded={20}
-                />
-              </View>
-              <View style={style.formControl}>
-                <Input
-                  mx="3"
-                  placeholder="Search task here..."
-                  w="100%"
-                  rounded={20}
-                />
-              </View>
-              <View style={style.formControl}>
-                <Input
-                  mx="3"
-                  placeholder="Search task here..."
-                  w="100%"
-                  rounded={20}
-                />
-              </View>
-              <View style={style.formControlDatePicker}>
-                <Button onPress={showDatepicker} title="Show date picker!" style={style.datePicker}/>
-                <Button onPress={showTimepicker} title="Show time picker!" />
-                {/* <Text>selected: {date.toLocaleString()}</Text> */}
-              </View>
-              <View style={style.containBtn}>
-                <View style={style.btnCancel}>
-                  <Button
-                    title="Press me"
-                    color={"red"}
-                    style={style.btn}
-                    onPress={() => setModalVisible(!modalVisible)}
-                  />
-                </View>
-                <View style={style.btn}>
-                  <Button
-                    title="Press me"
-                    color={"black"}
-                    onPress={() => setModalVisible(!modalVisible)}
-                  />
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
+        <AddForm closeFunction={closeModal} modalVisible={modalVisible} />
       </Modal>
       {/* Modal pour ajouter une nouvelle catégorie */}
     </View>
