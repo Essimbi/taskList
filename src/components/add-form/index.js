@@ -59,7 +59,7 @@ const AddForm = (props) => {
           <View style={style.formControl}>
             <Input
               mx="3"
-              placeholder="Search task here..."
+              placeholder="Task's name"
               w="100%"
               rounded={20}
             />
@@ -67,7 +67,7 @@ const AddForm = (props) => {
           <View style={style.formControl}>
             <Input
               mx="3"
-              placeholder="Search task here..."
+              placeholder="Objective"
               w="100%"
               rounded={20}
             />
@@ -75,20 +75,29 @@ const AddForm = (props) => {
           <View style={style.formControl}>
             <Input
               mx="3"
-              placeholder="Search task here..."
+              placeholder="Category"
               w="100%"
               rounded={20}
             />
           </View>
           <View style={style.formControlDatePicker}>
-          <MaterialIcons name="" size={30} color="black" onPress={showDatepicker} />
-            {/* <Button
-              onPress={showDatepicker}
-              title={<MaterialIcons name="person" size={30} color="black" />}
-              style={style.datePicker}
-            /> */}
-            <Button onPress={showTimepicker} title="Show time picker!" />
-            <Text>selected: {date.toLocaleString()}</Text>
+            <View style={style.dateStyle}>
+              <Text>Date of completion </Text>
+              <MaterialIcons
+                name="calendar-today"
+                size={20}
+                color="black"
+                onPress={showDatepicker}
+              />
+              <Text> : </Text>
+              <MaterialIcons
+                name="alarm"
+                size={20}
+                color="black"
+                onPress={showTimepicker}
+              />
+            </View>
+            {/* <Text>selected: {date.toLocaleString()}</Text> */}
           </View>
           <View style={style.containBtn}>
             <View style={style.btnCancel}>
