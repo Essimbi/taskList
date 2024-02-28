@@ -1,5 +1,4 @@
 import { View, Text, FlatList, Modal, Button } from "react-native";
-import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useState } from "react";
 import style from "./style";
 import { AddIcon, Input, Fab } from "native-base";
@@ -9,7 +8,7 @@ import AddForm from "../../components/add-form";
 
 const Home = () => {
   const categoryData = [
-    { id: 1, title: "Yep", icon: "code", totalTask: "10" },
+    { id: 1, title: "Coding", icon: "code", totalTask: "10" },
     { id: 2, title: "Learning", icon: "school", totalTask: "5" },
     { id: 3, title: "Home", icon: "home", totalTask: "15" },
   ];

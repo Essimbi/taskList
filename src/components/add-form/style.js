@@ -1,44 +1,39 @@
 import { StyleSheet } from "react-native";
 
 const style = StyleSheet.create({
-
-
-  searchInput: {
-    width: 10,
+  divModal: {
+    flex: 1,
+    backgroundColor: "rgb(0,0,0,0.5)",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
-  listCategoryTitle: {
+  formStyle: {
+    height: 340,
+    backgroundColor: "white",
+    padding: 15,
+    width: "100%",
+    borderRadius: 10,
+    marginBottom: -425,
+  },
+
+  FormTitle: {
     fontSize: 14,
     fontWeight: "bold",
   },
 
-  listCategoryDiv: {
-    paddingHorizontal: 15,
-    paddingVertical: 15,
-  },
-
-  scrallableListe: {
-    // paddingHorizontal: 15,
-    paddingVertical: 15,
-  },
-
   textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
+    paddingHorizontal: 25,
   },
 
   formDiv: {
     paddingVertical: 15,
-    marginLeft: -15,
+    marginLeft: -25,
   },
 
   formControl: {
     marginBottom: 20,
+    paddingHorizontal: 15,
   },
 
   containBtn: {
@@ -55,21 +50,16 @@ const style = StyleSheet.create({
   },
 
   formControlDatePicker: {
-    paddingHorizontal: 15,
+    paddingHorizontal: 25,
     display: "flex",
     flexDirection: "row",
-  },
-
-  datePicker: {
-    padding: 20,
-    margin: 40,
+    marginBottom: 15
   },
 
   dateStyle: {
-    display: 'flex',
-    flexDirection: 'row'
+    display: "flex",
+    flexDirection: "row",
   },
-
 });
 
 export default style;

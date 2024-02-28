@@ -1,13 +1,15 @@
 // import { Input } from "native-base";
-import { View, Text, FlatList, Modal, Button } from "react-native";
+import { View, Text, Button } from "react-native";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useState } from "react";
 import style from "./style";
 import { Input } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Picker } from "@react-native-picker/picker";
 
 const AddForm = (props) => {
   const [date, setDate] = useState(new Date(1598051730000));
+  const [selectedValue, setSelectedValue] = useState("option1");
 
   const close = () => {
     props.closeFunction(!props.modalVisible);
@@ -37,48 +39,29 @@ const AddForm = (props) => {
 
   return (
     <View
-      style={{
-        flex: 1,
-        backgroundColor: "rgb(0,0,0,0.5)",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+      style={style.divModal}
     >
       <View
-        style={{
-          height: 350,
-          backgroundColor: "white",
-          padding: 15,
-          width: "100%",
-          borderRadius: 10,
-          marginBottom: -425,
-        }}
+        style={style.formStyle}
       >
-        <Text style={style.listCategoryTitle}>New task</Text>
+        <Text style={style.FormTitle}>New task</Text>
         <View style={style.formDiv}>
           <View style={style.formControl}>
-            <Input
-              mx="3"
-              placeholder="Task's name"
-              w="100%"
-              rounded={20}
-            />
+            <Input mx="3" placeholder="Task's name" w="100%" rounded={20} />
           </View>
           <View style={style.formControl}>
-            <Input
-              mx="3"
-              placeholder="Objective"
-              w="100%"
-              rounded={20}
-            />
+            <Input mx="3" placeholder="Objective" w="100%" rounded={20} />
           </View>
-          <View style={style.formControl}>
-            <Input
-              mx="3"
-              placeholder="Category"
-              w="100%"
-              rounded={20}
-            />
+          <View style={style.textStyle}>
+            <Text style={style.listCategoryTitle}>Choose category</Text>
+            <Picker
+              selectedValue={selectedValue}
+              onValueChange={(itemValue) => setSelectedValue(itemValue)}
+            >
+              <Picker.Item label="Coding" value="1" />
+              <Picker.Item label="Learning" value="2" />
+              <Picker.Item label="Home" value="3" />
+            </Picker>
           </View>
           <View style={style.formControlDatePicker}>
             <View style={style.dateStyle}>
