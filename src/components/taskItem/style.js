@@ -18,8 +18,8 @@ const style = StyleSheet.create({
 
     stack: {
         display: 'flex',
-        flexDirection: 'row',
-        width: 300
+        flexDirection: 'column',
+        width: 315
     },
 
     styleCard: {
@@ -29,7 +29,16 @@ const style = StyleSheet.create({
         height: 80,
         borderRadius: 15,
         marginBottom: -10
-    }
+    },
+
+    titleTask: {
+        fontSize: 16,
+        fontWeight: 'bold'
+    },
+
+    dateTask: {
+        fontSize: 10
+    },
 })
 
 export default style ;
