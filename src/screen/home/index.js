@@ -1,10 +1,11 @@
-import { View, Text, FlatList, Modal, Button } from "react-native";
+import { View, Text, FlatList, Modal, ScrollView } from "react-native";
 import React, { useState } from "react";
 import style from "./style";
 import { AddIcon, Input, Fab } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import CategoryItem from "../../components/categoryItem";
 import AddForm from "../../components/add-form";
+import TaskItem from "../../components/taskItem";
 
 const Home = () => {
   const categoryData = [
@@ -16,8 +17,8 @@ const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
   // const toto = "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"
   const closeModal = (value) => {
-    setModalVisible(value)
-  }
+    setModalVisible(value);
+  };
 
   return (
     <View>
@@ -70,6 +71,24 @@ const Home = () => {
         <AddForm closeFunction={closeModal} modalVisible={modalVisible} />
       </Modal>
       {/* Modal pour ajouter une nouvelle catégorie */}
+
+      {/* Liste des taches */}
+
+      <View style={style.listCategoryDiv}>
+        <Text style={style.listCategoryTitle}>My tasks</Text>
+        <ScrollView style={style.listTask}>
+          <TaskItem />
+          <TaskItem />
+          <TaskItem />
+          <TaskItem />
+          <TaskItem />
+          <TaskItem />
+          <TaskItem />
+          <TaskItem />
+        </ScrollView>
+      </View>
+
+      {/* Fin liste des taches */}
     </View>
   );
 };

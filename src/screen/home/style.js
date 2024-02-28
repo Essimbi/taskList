@@ -30,6 +30,10 @@ const style = StyleSheet.create({
     paddingVertical: 15,
   },
 
+  listTask: {
+    height: 480
+  },
+
   centeredView: {
     flex: 1,
     justifyContent: "center",
