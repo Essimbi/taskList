@@ -1,4 +1,3 @@
-// import { Input } from "native-base";
 import { View, Text, Button } from "react-native";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useState } from "react";
@@ -6,10 +5,18 @@ import style from "./style";
 import { Input } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
+import { nanoid } from 'nanoid/non-secure';
+import useDataStore from "../../services/task.service";
+import { useNavigation } from '@react-navigation/native';
 
 const AddForm = (props) => {
-  const [date, setDate] = useState(new Date(1598051730000));
-  const [selectedValue, setSelectedValue] = useState("option1");
+
+  const { addData } = useDataStore();
+
+  const [date, setDate] = useState(new Date());
+  const [taskName, setTaskName] = useState();
+  const [taskObjective, setTaskObjective] = useState();
+  const [taskCategory, setTaskCategory] = useState("1");
 
   const close = () => {
     props.closeFunction(!props.modalVisible);
@@ -37,6 +44,28 @@ const AddForm = (props) => {
     showMode("time");
   };
 
+  const handleChangeTaskName = (text) => {
+    setTaskName(text)
+  }
+
+  const handleChangeTaskObjective = (text) => {
+    setTaskObjective(text)
+  }
+
+  const handleCreateTask = () => {
+    let newTask = {
+      id: `task-${nanoid()}`,
+      name: taskName,
+      objective: taskObjective,
+      category: taskCategory,
+      doneDate: date,
+      createdDate: new Date(),
+      status: "done"
+    }
+    addData(newTask);
+    close();
+  }
+
   return (
     <View
       style={style.divModal}
@@ -47,16 +76,16 @@ const AddForm = (props) => {
         <Text style={style.FormTitle}>New task</Text>
         <View style={style.formDiv}>
           <View style={style.formControl}>
-            <Input mx="3" placeholder="Task's name" w="100%" rounded={20} />
+            <Input mx="3" placeholder="Task's name" w="100%" rounded={20} value={taskName} onChangeText={handleChangeTaskName} />
           </View>
           <View style={style.formControl}>
-            <Input mx="3" placeholder="Objective" w="100%" rounded={20} />
+            <Input mx="3" placeholder="Objective" w="100%" rounded={20} value={taskObjective} onChangeText={handleChangeTaskObjective} />
           </View>
           <View style={style.textStyle}>
             <Text style={style.listCategoryTitle}>Choose category</Text>
             <Picker
-              selectedValue={selectedValue}
-              onValueChange={(itemValue) => setSelectedValue(itemValue)}
+              selectedValue={taskCategory}
+              onValueChange={(itemValue) => setTaskCategory(itemValue)}
             >
               <Picker.Item label="Coding" value="1" />
               <Picker.Item label="Learning" value="2" />
@@ -92,7 +121,7 @@ const AddForm = (props) => {
               />
             </View>
             <View style={style.btn}>
-              <Button title="Save" color={"black"} onPress={() => {}} />
+              <Button title="Save" color={"black"} onPress={() => handleCreateTask()} />
             </View>
           </View>
         </View>
