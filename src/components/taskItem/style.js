@@ -28,7 +28,7 @@ const style = StyleSheet.create({
         marginLeft: -2,
         height: 80,
         borderRadius: 15,
-        marginBottom: -10
+        marginBottom: -5
     },
 
     titleTask: {

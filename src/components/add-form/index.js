@@ -7,7 +7,6 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import { nanoid } from 'nanoid/non-secure';
 import useDataStore from "../../services/task.service";
-import { useNavigation } from '@react-navigation/native';
 
 const AddForm = (props) => {
 
@@ -60,7 +59,7 @@ const AddForm = (props) => {
       category: taskCategory,
       doneDate: date,
       createdDate: new Date(),
-      status: "done"
+      status: "not done"
     }
     addData(newTask);
     close();

@@ -31,7 +31,7 @@ const style = StyleSheet.create({
   },
 
   listTask: {
-    height: 480
+    height: 480,
   },
 
   centeredView: {
@@ -108,6 +108,11 @@ const style = StyleSheet.create({
     padding: 20,
     margin: 40,
   },
+
+  emptyListText: {
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }
 });
 
 export default style;

@@ -6,6 +6,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import CategoryItem from "../../components/categoryItem";
 import AddForm from "../../components/add-form";
 import TaskItem from "../../components/taskItem";
+import useDataStore from '../../services/task.service';
+import { useStore } from 'zustand';
 
 const Home = () => {
   const categoryData = [
@@ -19,6 +21,11 @@ const Home = () => {
   const closeModal = (value) => {
     setModalVisible(value);
   };
+
+  const { data, updateData } = useStore(useDataStore, (state) => ({
+    data: state.data,
+    // updateData: state.updateData,
+  }));
 
   return (
     <View>
@@ -77,14 +84,14 @@ const Home = () => {
       <View style={style.listCategoryDiv}>
         <Text style={style.listCategoryTitle}>My tasks</Text>
         <ScrollView style={style.listTask}>
-          <TaskItem />
-          <TaskItem />
-          <TaskItem />
-          <TaskItem />
-          <TaskItem />
-          <TaskItem />
-          <TaskItem />
-          <TaskItem />
+          {
+          data.length === 0 ? (
+            <Text style={style.emptyListText}>No tasks to display</Text>
+          ) : (
+            data.map((task) => <TaskItem task={task} />)
+          )
+          }
+          
         </ScrollView>
       </View>
 
