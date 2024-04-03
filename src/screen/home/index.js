@@ -11,21 +11,25 @@ import { useStore } from 'zustand';
 
 const Home = () => {
   const categoryData = [
-    { id: 1, title: "Coding", icon: "code", totalTask: "10" },
-    { id: 2, title: "Learning", icon: "school", totalTask: "5" },
-    { id: 3, title: "Home", icon: "home", totalTask: "15" },
+    { id: 1, title: "Coding", icon: "code", totalTask: "Great code" },
+    { id: 2, title: "Learning", icon: "school", totalTask: "Knowledge" },
+    { id: 3, title: "Home", icon: "home", totalTask: "Clean home" },
   ];
 
   const [modalVisible, setModalVisible] = useState(false);
-  // const toto = "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"
+  const [searchQuery, setSearchQuery] = useState('');
+
   const closeModal = (value) => {
     setModalVisible(value);
   };
 
   const { data, updateData } = useStore(useDataStore, (state) => ({
     data: state.data,
-    // updateData: state.updateData,
   }));
+
+  const filteredData = data.filter((task) =>
+      task.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <View>
@@ -33,7 +37,13 @@ const Home = () => {
       <View style={style.hearder}>
         {/* <Icon name="menu" size="30" color="white" /> */}
         <MaterialIcons name="menu" size={30} color="black" />
-        <Input mx="3" placeholder="Search task here..." w="80%" rounded={50} />
+        <Input
+          mx="3"
+          placeholder="Search task here..."
+          w="80%"
+          rounded={50}
+          onChangeText={(newQuery) => setSearchQuery(newQuery)}
+        />
         <MaterialIcons name="person" size={30} color="black" />
       </View>
       {/* Fin du Header */}
@@ -85,13 +95,12 @@ const Home = () => {
         <Text style={style.listCategoryTitle}>My tasks</Text>
         <ScrollView style={style.listTask}>
           {
-          data.length === 0 ? (
+          filteredData.length === 0 ? (
             <Text style={style.emptyListText}>No tasks to display</Text>
           ) : (
-            data.map((task) => <TaskItem task={task} />)
+            filteredData.map((task) => <TaskItem task={task} />)
           )
           }
-          
         </ScrollView>
       </View>
 

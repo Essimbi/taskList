@@ -11,7 +11,7 @@ const CategoryItem = ({ item }) => {
       </View>
       <View>
         <Text style={style.mainText}> {item.title} </Text>
-        <Text style={style.subText}> Total task: {item.totalTask} </Text>
+        <Text style={style.subText}> {item.totalTask} </Text>
       </View>
     </View>
   );

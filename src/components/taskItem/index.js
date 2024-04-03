@@ -28,7 +28,7 @@ const TaskItem = (props) => {
 
   let currentDate = new Date()
   let taskDate = new Date(task.doneDate)
-  let  checkIcon = (currentDate > taskDate && task.status !== "done") ? "red" : "green";
+  let checkIcon = (currentDate > taskDate) ? "red" : "green";
 
   const { updateData, removeData } = useStore(useDataStore, (state) => ({
     updateData: state.updateData,
@@ -58,8 +58,8 @@ const TaskItem = (props) => {
             <MaterialIcons name={categoryIcon} size={16} color="black" />
             <MaterialIcons name="check-circle" size={16} color={checkIcon} />
             <Pressable onPress={removeTask}>
-            <DeleteIcon color="black" size="sm" />
-          </Pressable>
+              <DeleteIcon color="black" size="sm" />
+            </Pressable>
           </View>
         </View>
       </Card>
